@@ -1,0 +1,38 @@
+!!! 5
+%html
+  %head
+    %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
+    %title= @page_title
+    %link{:href => '/css/screen.css', :media => 'all', :rel => 'stylesheet', :type => 'text/css'}
+
+  %body
+    #container
+      #header
+        %h1
+          A twitter archive for
+          %a{:href=>"/"}= @user.screen_name
+        %ul
+          %li= "#{@user.statuses_count} updates"
+          %li= "#{@user.friends_count} friends"
+          %li= "#{@user.followers_count} followers"
+          %li= "joined #{pretty_date(@user.created_at)}"
+          %li
+            %a{:href => "http://twitter.com/#{@user.screen_name}"} twitter.com/philoye
+
+      #page
+        #bar-wrapper
+          #bar
+            #search
+              %form{ :method => 'post', :action => '/search'}
+                %input{:type => 'search', :tabindex=> 1, :name => 'query', :value => @query || "", :results=> "5", :autocomplete => "off", :placeholder => "Search" }
+            #pagination
+            
+        #content
+          = yield
+
+      #footer
+        %ul
+          %li
+            :plain
+              Powered by <a href="http://github.com/philoye/tweetden">TweetDen</a>. Grab the <a href="http://github.com/philoye/tweetden">source</a> from GitHub and create your own.
+        

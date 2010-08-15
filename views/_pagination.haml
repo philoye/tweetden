@@ -1,0 +1,8 @@
+- context = request.path_info.include?("search") ? "/search/#{@query}/" : "/"
+
+#pagination
+  %a{:href=>context+(@page.to_i+1).to_s} « Older
+  - if (@page > 1)
+    %a{:href=>context+(@page.to_i-1).to_s} Newer »
+  - else
+    Newer
