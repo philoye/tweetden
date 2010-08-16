@@ -74,7 +74,7 @@ The Twitter API only exposes the last 3200 tweets, so if you have more than that
 NOW WHAT?
 ---------
 
-Give it a go and let me know how it works out. Follow [@tweetdenapp](http://twitter.com/tweetden) for updates and for support. You can also follow [@philoye](http://twitter.com/philoye) if you're so inclined.
+Give it a go and let me know how it works out. Follow [@tweetdenapp](http://twitter.com/tweetdenapp) for updates and for support. You can also follow [@philoye](http://twitter.com/philoye) if you're so inclined.
 
 
 LICENSE
