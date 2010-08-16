@@ -63,3 +63,15 @@ end
 task :cron do
   Rake::Task["import:latest"].invoke
 end
+
+task :buildjs do
+  require 'open-uri'
+  compiler = YUI::JavaScriptCompressor.new
+  js = [
+    'http://github.com/NV/placeholder.js/raw/gh-pages/placeholder.js'
+  ].map {|lib|
+    puts "Compiling #{lib}"
+    compiler.compress open(lib).read
+  }.join("\n")
+  File.open('public/js/libs.js','w'){|f| f.write(js)}
+end

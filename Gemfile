@@ -8,8 +8,7 @@ gem 'twitter-text'
 gem 'bson_ext'
 gem 'mongo_mapper'
 
-group :development do
-  gem 'shotgun'
-  gem 'thin'
-end
+gem 'shotgun'
+gem 'thin'
+gem 'yui-compressor', :require => 'yui/compressor'
 

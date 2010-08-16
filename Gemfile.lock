@@ -32,6 +32,7 @@ GEM
       rack (>= 1.0.0)
     twitter-text (1.1.6)
       actionpack
+    yui-compressor (0.9.1)
 
 PLATFORMS
   ruby
@@ -46,3 +47,4 @@ DEPENDENCIES
   sinatra (>= 1.0)
   thin
   twitter-text
+  yui-compressor
