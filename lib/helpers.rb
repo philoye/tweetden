@@ -1,3 +1,11 @@
+def jquery_url
+  if production?
+    return 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
+  else 
+    return '/js/jquery-1.4.2'
+  end
+end
+
 def pretty_date(date)
   format = "%e %B %Y"
   if date.is_a?(String)
