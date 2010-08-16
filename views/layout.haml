@@ -4,6 +4,12 @@
     %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
     %title= @page_title
     %link{:href => '/css/screen.css', :media => 'all', :rel => 'stylesheet', :type => 'text/css'}
+    %script{:src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', :type => 'text/javascript'}
+    %script{:src => '/js/libs.js', :type => 'text/javascript'}
+    :javascript
+      window.onload = function(){
+        inputPlaceholder(document.getElementById('search_field'), "#ccc");
+      }
 
   %body
     #container
@@ -24,7 +30,7 @@
           #bar
             #search
               %form{ :method => 'post', :action => '/search'}
-                %input{:type => 'search', :tabindex=> 1, :name => 'query', :value => @query || "", :results=> "5", :autocomplete => "off", :placeholder => "Search" }
+                %input{:id => "search_field", :type => 'search', :tabindex=> 1, :name => 'query', :value => @query || "", :results=> "5", :autocomplete => "off", :placeholder => "Search" }
             #pagination
             
         #content

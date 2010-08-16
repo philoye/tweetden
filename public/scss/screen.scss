@@ -79,15 +79,19 @@ body {
       background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 200, from(rgba(255,255,255,.5)), to(rgba(255,255,255,0))), -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ddd), color-stop(0.5, #ddd));
     }
   #search {
-    padding: 15px 0 0 25px;
+    padding: 15px 15px 0 15px;
     height: 39px;
     border-bottom: 1px solid #999;
-  }
-    #search input {
+    width: 570px;
+    input {
       font-size: 16px;
+      padding: 3px;
       font-weight: bold;
-      width: 550px;
+      width: 560px;
+      margin: 0 auto;
+      display: block;
     }
+  }
   #content {
     padding: 55px 0px 25px 0px;
   }
