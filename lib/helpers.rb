@@ -1,7 +1,6 @@
 def pagination_stats(total,page,per)
-  start = (page-1)*per+1
-  finish = [per*page,total].min
-  
+  start  = (page-1) * per + 1
+  finish = [ per*page, total ].min
   return "#{start}-#{finish} of #{total} found"
 end
 
