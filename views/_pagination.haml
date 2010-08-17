@@ -1,17 +1,5 @@
 - context = request.path_info.include?("search") ? "/search/#{@query}/" : "/"
 
--# puts @tweets.total_pages
--# puts @tweets.previous_page
--# puts @tweets.next_page
-
--# 7
--# nil
--# 2
-
--# 1-5 of 32 tweets found.
-
--# ((page - 1) * pp + 1) - (pp * page)
-
 #pagination
   #stats
     = pagination_stats(@tweets.total_entries,@page,@per_page)
