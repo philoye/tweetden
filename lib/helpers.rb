@@ -1,3 +1,10 @@
+def pagination_stats(total,page,per)
+  start = (page-1)*per+1
+  finish = [per*page,total].min
+  
+  return "#{start}-#{finish} of #{total} found"
+end
+
 def jquery_url
   if production?
     return 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'

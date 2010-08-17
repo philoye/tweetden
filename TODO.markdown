@@ -1,11 +1,11 @@
 TODO
 ====
 
-* Pagination is pretty useless right now (it always shows "previous" even if there are no records to show). You should be able to jump to each page of results.
+* You should be able to jump to each page of results, rather than just next/previous
 
-* Number of results for search should be much higher (100).
+* Should be able to change sort direction
 
-* Search itself is *very* limited. At the very least, it would be nice to be able to change sort direction. Maybe filter to show/exclude retweets.
+* Search only handles single word queries
 
 * Add ability to browse by month
 

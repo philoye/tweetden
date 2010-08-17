@@ -177,3 +177,14 @@ p.meta {
   
   
 }
+
+#pagination {
+  overflow:hidden;
+  #stats {
+    float: left;
+  }
+  #nextprevious {
+    color: #999;
+    float: right;
+  }
+}
