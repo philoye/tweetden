@@ -12,8 +12,6 @@ class ArchivedTweet
   key :in_reply_to_screen_name, String
   key :favorited, String
 
-  has_search :text
-
   def self.import(statuses)
     statuses.each do |status|
       status.rename_key("id","twitter_id")

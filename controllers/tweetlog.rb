@@ -1,5 +1,7 @@
 before do
+  @per_page = 1
   @user = ArchivedUser.first()
+  @page  = (params[:page] || 1).to_i
 end
 
 get '/search/?' do
@@ -11,16 +13,13 @@ post '/search' do
 end
 
 get '/search/:query/?:page?/?' do
-  @page  = (params[:page] || 1).to_i
   @query = CGI::unescape(params[:query])
-  @tweets = ArchivedTweet.search(@query, :order => "created_at desc", :page => @page, :paginate => true)
+  @tweets = ArchivedTweet.sort(:created_at.desc).paginate(:page => @page, :per_page => @per_page, :conditions => {:text => /#{@query}/})
   haml :index
 end
 
 get '/:page?/?' do
-  @page  = (params[:page] || 1).to_i
-  skip_count  = ((@page - 1) * 100)
-  @tweets = ArchivedTweet.sort(:created_at.desc).skip(skip_count).limit(100).all
+  @tweets = ArchivedTweet.sort(:created_at.desc).paginate(:page => @page, :per_page => @per_page)
   haml :index
 end
 
