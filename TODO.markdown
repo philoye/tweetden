@@ -7,6 +7,8 @@ TODO
 
 * Search only handles single word queries
 
+* Retweets and Retweet/User should use MongoMapper::EmbeddedDocument?
+
 * Add ability to browse by month
 
 * Rake import:all should hit the Twitter API only as many times as necessary to get all the user's tweets, rather than just blindly assuming 3200.
