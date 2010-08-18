@@ -1,5 +1,6 @@
 before do
   @per_page = 200
+  @direction = params[:direction] || "desc"
   @user = ArchivedUser.first()
 end
 
@@ -11,16 +12,17 @@ post '/search' do
   redirect "/search/#{params[:query]}"
 end
 
-get '/search/:query/?:page?/?' do
+get '/search/:query' do
   @page  = (params[:page] || 1).to_i
   @query = CGI::unescape(params[:query])
-  @tweets = ArchivedTweet.sort(:created_at.desc).paginate(:page => @page, :per_page => @per_page, :conditions => {:text => /#{@query}/})
+  @tweets = ArchivedTweet.sort(:created_at.send(@direction)).paginate(:page => @page, :per_page => @per_page, :conditions => {:text => /#{@query}/})
+  params.delete("query") # Search term doesn't need to be in the query string.
   haml :index
 end
 
 get '/:page?/?' do
   @page  = (params[:page] || 1).to_i
-  @tweets = ArchivedTweet.sort(:created_at.desc).paginate(:page => @page, :per_page => @per_page)
+  @tweets = ArchivedTweet.sort(:created_at.send(@direction)).paginate(:page => @page, :per_page => @per_page)
   haml :index
 end
 
