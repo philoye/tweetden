@@ -42,7 +42,6 @@ DEPENDENCIES
   haml
   json
   mongo_mapper
-  rack (= 1.1.0)
   shotgun
   sinatra (>= 1.0)
   thin
