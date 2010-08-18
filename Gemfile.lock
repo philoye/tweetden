@@ -5,6 +5,7 @@ GEM
       activesupport (= 2.3.8)
       rack (~> 1.1.0)
     activesupport (2.3.8)
+    addressable (2.2.0)
     bson (1.0.4)
     bson_ext (1.0.4)
     daemons (1.1.0)
@@ -38,6 +39,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   bson_ext
   haml
   json

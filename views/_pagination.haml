@@ -1,15 +1,13 @@
-- context = request.path_info.include?("search") ? "/search/#{@query}/" : "/"
-
 #pagination
   #stats
     = pagination_stats(@tweets.total_entries,@page,@per_page)
   
   #nextprevious
-    - if @tweets.next_page
-      %a{:href=>context+(@tweets.next_page).to_s} « Older
-    - else
-      « Older
     - if @tweets.previous_page
-      %a{:href=>context+(@tweets.previous_page).to_s} Newer »
+      %a{:href=>url_for(request.path_info, {"page" => @tweets.previous_page.to_s})} « Newer
     - else
-      Newer »
+      « Newer
+    - if @tweets.next_page
+      %a{:href=>url_for(request.path_info, {"page" => @tweets.next_page.to_s})} Older »
+    - else
+      Older »

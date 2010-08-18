@@ -1,3 +1,10 @@
+# This is a very ghetto, and limited, version of url_for
+def url_for(path,options)
+  uri = Addressable::URI.new(:path => path)
+  uri.query_values = params.merge(options)
+  return uri
+end
+
 def pagination_stats(total,page,per)
   start  = (page-1) * per + 1
   finish = [ per*page, total ].min
@@ -20,7 +27,6 @@ def pretty_date(date)
     return date.strftime(format)
   end
 end
-
 
 def pretty_datetime(datetime)
   format = "%e %B %Y, %l:%m%p"
