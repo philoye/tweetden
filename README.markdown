@@ -48,7 +48,7 @@ GETTING STARTED
   
     An easy way to backup your tweets is via a web browser directly from Twitter. Go to the following URL and save the output. Just insert your screen name and change `page=1` to `page=2`, etc. up to `page=16` to grab 3200 tweets (200 is the max per request).
 
-    [http://twitter.com/statuses/user_timeline/YOUR_SCREEN_NAME.json?count=200&trim_user=true&include_rts=true&include_entities=true&page=1](http://twitter.com/statuses/user_timeline/philoye.json?count=200&trim_user=true&include_rts=true&include_entities=true&page=1)
+    [http://api.twitter.com/1/statuses/user_timeline/YOUR_SCREEN_NAME.json?count=200&include_rts=true&include_entities=true&page=1](http://api.twitter.com/1/statuses/user_timeline/philoye.json?count=200&include_rts=true&include_entities=true&page=1)
 
     The import task assumes json. If you have xml files, run the following rake task first, which will create json files in the same directory (it won't overwrite the xml):
     
