@@ -5,17 +5,20 @@
     Sort by: 
     - if @direction=='asc'
       %a{:href=>url_for(request.path_info, {"direction" => 'desc'})} Latest
-      Oldest
+      %span Oldest
+      - label_prev = "Newer »"
+      - label_next = "« Older"
     - else
-      Latest
+      %span Latest
       %a{:href=>url_for(request.path_info, {"direction" => 'asc'})} Oldest
-
+      - label_prev = "Older »"
+      - label_next = "« Newer"
   #nextprevious
     - if @tweets.previous_page
-      %a{:href=>url_for(request.path_info, {"page" => @tweets.previous_page.to_s})} « Newer
+      %a{:href=>url_for(request.path_info, {"page" => @tweets.previous_page.to_s})}= label_next
     - else
-      « Newer
+      = label_next
     - if @tweets.next_page
-      %a{:href=>url_for(request.path_info, {"page" => @tweets.next_page.to_s})} Older »
+      %a{:href=>url_for(request.path_info, {"page" => @tweets.next_page.to_s})}= label_prev
     - else
-      Older »
+      = label_prev
