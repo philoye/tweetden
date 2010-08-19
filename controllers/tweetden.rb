@@ -21,7 +21,7 @@ get '/search/:query' do
   haml :index
 end
 
-get '/:page?/?' do
+get '/' do
   @page  = (params[:page] || 1).to_i
   @tweets = ArchivedTweet.sort(:created_at.send(@direction)).paginate(:page => @page, :per_page => @per_page)
   haml :index
