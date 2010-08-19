@@ -15,7 +15,7 @@ end
 get '/search/:query' do
   @page  = (params[:page] || 1).to_i
   @query = CGI::unescape(params[:query])
-  @tweets = ArchivedTweet.sort(:created_at.send(@direction)).paginate(:page => @page, :per_page => @per_page, :conditions => {:text => /#{@query}/})
+  @tweets = ArchivedTweet.sort(:created_at.send(@direction)).paginate(:page => @page, :per_page => @per_page, :conditions => {:text => /#{@query}/i})
   params.delete("query") # Search term doesn't need to be in the query string.
   haml :index
 end
