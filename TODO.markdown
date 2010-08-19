@@ -5,8 +5,6 @@ TODO
 
 * Should be able to change sort direction
 
-* Search only handles single word queries
-
 * Retweets and Retweet/User should use MongoMapper::EmbeddedDocument?
 
 * Add ability to browse by month
