@@ -43,9 +43,10 @@ namespace :import do
     count = 100
     n = 3200 / count
     n.times do |page|
-      puts "Trying page #{page+1}"
-      ArchivedTweet.import( TwitterCom.getTweets(page+1,count) )
-      sleep 30
+      attempt(5,20) do
+        puts "Trying page #{page+1}"
+        ArchivedTweet.import( TwitterCom.getTweets(page+1,count) )
+      end
     end
   end
   

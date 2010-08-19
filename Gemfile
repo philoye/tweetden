@@ -7,6 +7,7 @@ gem 'twitter-text'
 gem 'bson_ext'
 gem 'mongo_mapper'
 gem 'addressable', :require => "addressable/uri"
+gem 'attempt'
 
 gem 'shotgun'
 gem 'thin'

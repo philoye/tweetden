@@ -15,8 +15,6 @@ TODO
 
 * There is no way to update the information for the user. Running `rake import:user` multiple times doesn't update the info.
 
-* Rake import:all doesn't handle Twitter rate limiting, connection timeouts, etc. To work around this (and to be nice to the API), it only pulls 100 at a time and sleeps 30 seconds between requests. If it still blows up, just keep re-running the rake task. It'll grab them all eventually and won't result in duplicates.
-
 * Graphs and Stats!
 
 * Support old avatar pics
