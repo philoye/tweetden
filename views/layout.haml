@@ -31,7 +31,7 @@
             #search
               %form{ :method => 'post', :action => '/search'}
                 %input{:id => "search_field", :type => 'search', :tabindex=> 1, :name => 'query', :value => @query || "", :results=> "5", :autocomplete => "off", :placeholder => "Search" }
-            #pagination
+            = yield_content :pagination
             
         #content
           = yield

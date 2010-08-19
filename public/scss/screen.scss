@@ -64,7 +64,7 @@ body {
     top: 0;
     left: $left_column_width - 25px;
     width: 700px;
-    height: 80px;
+    height: 105px;
     overflow: hidden;
     z-index: 101;
     background-color: $bg_color;
@@ -72,7 +72,7 @@ body {
     #bar {
       @include box-shadow(#000, 0px, 0px, 10px);
       @include border-radius(4px);
-      height: 60px;
+      height: 86px;
       width: 600px;
       margin: 25px 50px 0 50px;
       background-color: #ddd;
@@ -81,7 +81,8 @@ body {
   #search {
     padding: 15px 15px 0 15px;
     height: 39px;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.3);
     width: 570px;
     input {
       font-size: 16px;
@@ -92,11 +93,26 @@ body {
       display: block;
     }
   }
-  #content {
-    padding: 55px 0px 25px 0px;
-  }
   #pagination {
-    padding: 10px 25px 0;
+    padding: 0px 25px;
+    height: 24px;
+    line-height: 24px;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    overflow:hidden;
+    font-size: 12px;
+    font-weight: bold;
+    color: #555;
+    #stats,#sort {
+      float: left;
+      padding-right: 15px;
+    }
+    #nextprevious {
+      color: #999;
+      float: right;
+    }
+  }
+  #content {
+    padding: 85px 0px 25px 0px;
   }
 #footer {
   margin-left: $left_column_width + 25px;
@@ -176,15 +192,4 @@ p.meta {
   }
   
   
-}
-
-#pagination {
-  overflow:hidden;
-  #stats {
-    float: left;
-  }
-  #nextprevious {
-    color: #999;
-    float: right;
-  }
 }

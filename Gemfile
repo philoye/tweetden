@@ -8,6 +8,7 @@ gem 'bson_ext'
 gem 'mongo_mapper'
 gem 'addressable', :require => "addressable/uri"
 gem 'attempt'
+gem 'sinatra-content-for', :require => 'sinatra/content_for'
 
 gem 'shotgun'
 gem 'thin'

@@ -1,7 +1,15 @@
 #pagination
   #stats
     = pagination_stats(@tweets.total_entries,@page,@per_page)
-  
+  #sort
+    Sort by: 
+    - if @direction=='asc'
+      %a{:href=>url_for(request.path_info, {"direction" => 'desc'})} Latest
+      Oldest
+    - else
+      Latest
+      %a{:href=>url_for(request.path_info, {"direction" => 'asc'})} Oldest
+
   #nextprevious
     - if @tweets.previous_page
       %a{:href=>url_for(request.path_info, {"page" => @tweets.previous_page.to_s})} « Newer

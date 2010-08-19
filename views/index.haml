@@ -1,3 +1,6 @@
+- content_for :pagination do
+  =partial :pagination
+
 - @page_title = "A Twitter archive for @#{ENV['TWEETDEN_SCREEN_NAME']}"
 
 - @tweets.each do |tweet|
@@ -5,5 +8,3 @@
     =partial :'retweet', :locals => { :retweet => tweet }
   - else
     =partial :'tweet', :locals => { :tweet => tweet }
-
-=partial :pagination
