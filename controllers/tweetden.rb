@@ -1,5 +1,5 @@
 before do
-  @per_page = 200
+  @per_page = 50
   @direction = params[:direction] || "desc"
   @user = ArchivedUser.first()
 end
