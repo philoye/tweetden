@@ -1,44 +1,142 @@
+PATH
+  remote: /Users/philoye/code/sinatra-assetpack
+  specs:
+    sinatra-assetpack (0.0.12.pre1)
+      jsmin
+      rack-test
+      sinatra
+      tilt (>= 1.3.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
-    actionpack (2.3.8)
-      activesupport (= 2.3.8)
-      rack (~> 1.1.0)
-    activesupport (2.3.8)
-    addressable (2.2.0)
+    POpen4 (0.1.4)
+      Platform (>= 0.4.0)
+      open4
+    Platform (0.4.0)
+    activemodel (3.2.9)
+      activesupport (= 3.2.9)
+      builder (~> 3.0.0)
+    activesupport (3.2.9)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
+    addressable (2.3.2)
     attempt (0.2.0)
       structured_warnings
-    bson (1.0.4)
-    bson_ext (1.0.4)
-    daemons (1.1.0)
-    eventmachine (0.12.10)
-    haml (3.0.17)
-    jnunemaker-validatable (1.8.4)
-      activesupport (>= 2.3.4)
-    json (1.4.6)
-    mongo (1.0.7)
-      bson (>= 1.0.4)
-    mongo_mapper (0.8.3)
-      activesupport (>= 2.3.4)
-      jnunemaker-validatable (~> 1.8.4)
-      plucky (~> 0.3.3)
-    plucky (0.3.4)
-      mongo (~> 1.0.7)
-    rack (1.1.0)
-    shotgun (0.8)
+    backports (2.6.5)
+    bson (1.7.0)
+    bson_ext (1.7.0)
+      bson (~> 1.7.0)
+    builder (3.0.4)
+    chunky_png (1.2.6)
+    coderay (1.0.8)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.4.0)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    dalli (2.3.0)
+    em-websocket (0.3.8)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
+    eventmachine (1.0.0)
+    excon (0.16.8)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
+    foreman (0.60.2)
+      thor (>= 0.13.6)
+    fssm (0.2.9)
+    guard (1.5.4)
+      listen (>= 0.4.2)
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      thor (>= 0.14.6)
+    guard-livereload (1.1.0)
+      em-websocket (>= 0.2.0)
+      guard (>= 1.5.0)
+      multi_json (~> 1.0)
+    haml (3.2.0.rc.1)
+      tilt
+    heroku (2.33.0)
+      heroku-api (~> 0.3.5)
+      launchy (>= 0.3.2)
+      netrc (~> 0.7.7)
+      rest-client (~> 1.6.1)
+      rubyzip
+    heroku-api (0.3.6)
+      excon (~> 0.16.7)
+    i18n (0.6.1)
+    jsmin (1.0.1)
+    json (1.7.5)
+    kgio (2.7.4)
+    launchy (2.1.2)
+      addressable (~> 2.3)
+    listen (0.5.3)
+    lumberjack (1.0.2)
+    method_source (0.8.1)
+    mime-types (1.19)
+    mongo (1.7.0)
+      bson (~> 1.7.0)
+    mongo_mapper (0.12.0)
+      activemodel (~> 3.0)
+      activesupport (~> 3.0)
+      plucky (~> 0.5.2)
+    multi_json (1.3.7)
+    netrc (0.7.7)
+    open4 (1.3.0)
+    plucky (0.5.2)
+      mongo (~> 1.5)
+    pry (0.9.10)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
+    rack (1.4.1)
+    rack-cache (1.2)
+      rack (>= 0.4)
+    rack-livereload (0.3.8)
+      rack
+    rack-protection (1.2.0)
+      rack
+    rack-test (0.6.2)
       rack (>= 1.0)
-    sinatra (1.0)
-      rack (>= 1.0)
-    sinatra-content-for (0.2)
+    raindrops (0.10.0)
+    rb-fsevent (0.9.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    rubyzip (0.9.9)
+    sass (3.2.3)
+    sinatra (1.3.3)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    sinatra-contrib (1.3.2)
+      backports (>= 2.0)
+      eventmachine
+      rack-protection
+      rack-test
+      sinatra (~> 1.3.0)
+      tilt (~> 1.3)
+    sinatra-partial (0.3.2)
       sinatra
+    sinatra-reloader (1.0)
+      sinatra-contrib
+    sinatra-support (1.2.2)
+      sinatra (>= 1.0)
+    slop (3.3.3)
     structured_warnings (0.1.3)
-    thin (1.2.7)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
-    twitter-text (1.1.6)
-      actionpack
-    yui-compressor (0.9.1)
+    thor (0.16.0)
+    tilt (1.3.3)
+    twitter-text (1.5.0)
+      activesupport
+    unicorn (4.4.0)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+    yui-compressor (0.9.6)
+      POpen4 (>= 0.1.4)
 
 PLATFORMS
   ruby
@@ -47,12 +145,26 @@ DEPENDENCIES
   addressable
   attempt
   bson_ext
-  haml
+  coffee-script
+  compass
+  dalli
+  foreman
+  guard
+  guard-livereload
+  haml (~> 3.2.beta)
+  heroku
   json
   mongo_mapper
-  shotgun
-  sinatra (>= 1.0)
-  sinatra-content-for
-  thin
+  rack-cache
+  rack-livereload
+  rb-fsevent
+  sass
+  sinatra
+  sinatra-assetpack!
+  sinatra-contrib
+  sinatra-partial
+  sinatra-reloader
+  sinatra-support
   twitter-text
+  unicorn
   yui-compressor
