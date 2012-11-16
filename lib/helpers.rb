@@ -12,11 +12,7 @@ def pagination_stats(total,page,per)
 end
 
 def jquery_url
-  if production?
-    return 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
-  else 
-    return '/js/jquery-1.4.2'
-  end
+  '/js/jquery-1.4.2'
 end
 
 def pretty_date(date)
