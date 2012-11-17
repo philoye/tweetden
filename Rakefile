@@ -1,4 +1,5 @@
-require 'init'
+$LOAD_PATH << File.dirname(__FILE__)
+ENV['RACK_ENV'] = 'development' unless ENV['RACK_ENV']
 
 desc "let's boot this sucker"
 task :default do
@@ -9,6 +10,8 @@ end
 task :watch do
   `sass --watch public/scss/screen.scss:public/css/screen.css --scss --style compressed --no-cache`
 end
+require 'sinatra/activerecord/rake'
+require 'application'
 
 desc "Converts backed up twitter status xml to json"
 task :convert_xml_backup_to_json do

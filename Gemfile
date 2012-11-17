@@ -1,5 +1,7 @@
 source :rubygems
 
+gem 'rake'
+
 gem 'heroku'
 gem 'foreman'
 gem 'unicorn'

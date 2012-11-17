@@ -157,6 +157,7 @@ DEPENDENCIES
   mongo_mapper
   rack-cache
   rack-livereload
+  rake
   rb-fsevent
   sass
   sinatra
