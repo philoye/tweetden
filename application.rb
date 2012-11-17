@@ -94,6 +94,10 @@ class App < Sinatra::Base
     haml :index
   end
 
+  get 'favicon.ico' do
+    ""
+  end
+
   not_found do
     haml :not_found
   end
