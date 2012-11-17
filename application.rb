@@ -43,26 +43,19 @@ class App < Sinatra::Base
     enable   :show_exceptions
   end
 
-  #assets {
-    #serve '/images', from: 'app/images'
-    #serve '/js',     from: 'app/js'
-    #serve '/css',    from: 'app/css'
+  assets {
+    serve '/images', from: 'app/images'
+    serve '/js',     from: 'app/js'
+    serve '/css',    from: 'app/css'
 
-    #js :'jsforhead', [
-      #'/js/vendor/modernizr.js',
-      #'/js/vendor/respond.js'
-    #]
-    #js :application, [
-      #'/js/vendor/jquery.js',
-      #'/js/vendor/underscore.js',
-      #'/js/vendor/console.js',
-      #'/js/application.js'
-    #]
-    #css :application, [
-      #'/css/*.css'
-    #]
-    #expires 86400*365, :public
-  #}
+    js :application, [
+      '/js/jquery.js'
+    ]
+    css :application, [
+      '/css/*.css'
+    ]
+    expires 86400*365, :public
+  }
 
   before do
     @per_page = 50
