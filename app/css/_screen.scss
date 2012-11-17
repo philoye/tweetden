@@ -14,7 +14,8 @@ body {
   width: $left_column_width;
 
   ul {
-    margin-top: 200px;
+    margin: 200px 0 0 0;
+    padding: 0;
     color: $bg_color - #444;
     list-style: none;
     font-size: 13px;
@@ -36,7 +37,7 @@ body {
   }
 }
 #page {
-  @include box-shadow(#000, 0px, 0px, 10px);
+  @include box-shadow(#000 0px 0px 10px);
   @include border-radius(4px);
   position: relative;
   margin: 25px 0 10px $left_column_width + 25px;
@@ -59,7 +60,7 @@ body {
     }
   }
     #bar {
-      @include box-shadow(#000, 0px, 0px, 10px);
+      @include box-shadow(#000 0px 0px 10px);
       @include border-radius(4px);
       height: 86px;
       width: 600px;
