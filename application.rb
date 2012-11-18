@@ -16,6 +16,7 @@ class App < Sinatra::Base
     set      :sass, { :load_paths => [ "#{App.root}/app/css" ] }
     set      :haml, :format => :html5
 
+    register Sinatra::ActiveRecordExtension
     register Sinatra::CompassSupport
     register Sinatra::AssetPack
     register Sinatra::Partial
@@ -23,13 +24,16 @@ class App < Sinatra::Base
 
     enable :partial_underscores
 
-    MongoMapper.database = 'tweetden'
-    if ENV['RACK_ENV'] == :production
-      MongoMapper.connection = Mongo::Connection.new(ENV['TWEETDEN_MONGO_HOST'], ENV['TWEETDEN_MONGO_PORT'])
-      MongoMapper.database.authenticate(ENV['TWEETDEN_MONGO_USER'], ENV['TWEETDEN_MONGO_PASS'])
-    else
-      MongoMapper.connection = Mongo::Connection.new('localhost')
-    end
+    database  = YAML::load_file("config/database.yml")
+    ActiveRecord::Base.establish_connection(database[env])
+
+    #MongoMapper.database = 'tweetden'
+    #if ENV['RACK_ENV'] == :production
+      #MongoMapper.connection = Mongo::Connection.new(ENV['TWEETDEN_MONGO_HOST'], ENV['TWEETDEN_MONGO_PORT'])
+      #MongoMapper.database.authenticate(ENV['TWEETDEN_MONGO_USER'], ENV['TWEETDEN_MONGO_PASS'])
+    #else
+      #MongoMapper.connection = Mongo::Connection.new('localhost')
+    #end
   end
 
   # Load files
@@ -67,13 +71,14 @@ class App < Sinatra::Base
   before do
     @per_page = 50
     @direction = params[:direction] || "desc"
-    @user = ArchivedUser.first()
+    @user = User.first()
   end
 
   get '/' do
     cache_control :public, :must_revalidate, :max_age => 3600
-    @page  = (params[:page] || 1).to_i
-    @tweets = ArchivedTweet.sort(:created_at.send(@direction)).paginate(:page => @page, :per_page => @per_page)
+    @page   = (params[:page] || 1).to_i
+    @count  = Tweet.count
+    @tweets = Tweet.paginate(:page => @page, :per_page => 50).order("created_at #{@direction}")
     haml :index
   end
 
@@ -88,9 +93,10 @@ class App < Sinatra::Base
   get '/search/:query' do
     @page  = (params[:page] || 1).to_i
     @query = CGI::unescape(params[:query])
-    query_regex = @query.split(" ").join("|")
-    @tweets = ArchivedTweet.sort(:created_at.send(@direction)).paginate(:page => @page, :per_page => @per_page, :conditions => {:text => /(#{query_regex})/i})
-    params.delete("query") # Search term doesn't need to be in the query string.
+    @tweets = Tweet.search_for(@query)
+    @count = @tweets.count
+    @tweets = @tweets.order("created_at #{@direction}").paginate(:page => @page, :per_page => 50)
+    params.except!("splat", "captures", "query")
     haml :index
   end
 
