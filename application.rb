@@ -25,8 +25,16 @@ class App < Sinatra::Base
 
     enable :partial_underscores
 
-    database  = YAML::load_file("config/database.yml")
-    ActiveRecord::Base.establish_connection(database[env])
+    db = URI.parse(ENV['DATABASE_URL'] || "postgres://localhost/tweetden_#{ENV['RACK_ENV']}")
+    ActiveRecord::Base.establish_connection(
+      :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+      :host     => db.host,
+      :port     => db.port,
+      :username => db.user,
+      :password => db.password,
+      :database => db.path[1..-1],
+      :encoding => 'utf8'
+    )
 
     #MongoMapper.database = 'tweetden'
     #if ENV['RACK_ENV'] == :production
