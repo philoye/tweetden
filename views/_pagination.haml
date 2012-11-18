@@ -1,24 +1,19 @@
-#pagination
-  #stats
-    = pagination_stats(@tweets.total_entries,@page,@per_page)
-  #sort
-    Sort by: 
-    - if @direction=='asc'
-      %a{:href=>url_for(request.path_info, {"direction" => 'desc'})} Latest
-      %span Oldest
-      - label_prev = "Newer »"
-      - label_next = "« Older"
-    - else
-      %span Latest
-      %a{:href=>url_for(request.path_info, {"direction" => 'asc'})} Oldest
-      - label_prev = "Older »"
-      - label_next = "« Newer"
-  #nextprevious
-    - if @tweets.previous_page
-      %a{:href=>url_for(request.path_info, {"page" => @tweets.previous_page.to_s})}= label_next
-    - else
-      = label_next
-    - if @tweets.next_page
-      %a{:href=>url_for(request.path_info, {"page" => @tweets.next_page.to_s})}= label_prev
-    - else
-      = label_prev
+-if @count > 0
+  #pagination
+    #stats
+      = pagination_stats(@count, @page, @per_page)
+      sorted by
+      - if @direction=='asc'
+        %a{:href=>url_for(request.path_info, {'direction' => 'desc', 'page' => '1'})} Newest
+        %span Oldest
+        - label_prev = "Older"
+        - label_next = "Newer"
+      - else
+        %span Newest
+        %a{:href=>url_for(request.path_info, {'direction' => 'asc', 'page' => '1'})} Oldest
+        - label_prev = "Newer"
+        - label_next = "Older"
+
+    #nextprevious
+      = will_paginate @tweets, { :previous_label => "« #{label_prev}", :next_label => "#{label_next} »", :page_links => false }
+

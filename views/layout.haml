@@ -13,9 +13,9 @@
           A twitter archive for
           %a{:href=>"/"}= @user.screen_name
         %ul
-          %li= "#{@user.statuses_count} updates"
-          %li= "#{@user.friends_count} friends"
-          %li= "#{@user.followers_count} followers"
+          %li= "#{@user.tweets.count} updates"
+          %li= "#{@user.attrs.friends_count} friends"
+          %li= "#{@user.attrs.followers_count} followers"
           %li= "joined #{pretty_date(@user.created_at)}"
           %li
             %a{:href => "http://twitter.com/#{@user.screen_name}"} twitter.com/philoye

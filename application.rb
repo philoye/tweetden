@@ -21,6 +21,7 @@ class App < Sinatra::Base
     register Sinatra::AssetPack
     register Sinatra::Partial
     register Sinatra::Contrib
+    register WillPaginate::Sinatra
 
     enable :partial_underscores
 

@@ -1,10 +1,14 @@
 - content_for :pagination do
-  =partial :pagination
+  = partial :pagination
 
 - @page_title = "A Twitter archive for @#{ENV['TWEETDEN_SCREEN_NAME']}"
 
-- @tweets.each do |tweet|
-  - if tweet['retweeted_status']
-    =partial :'retweet', :locals => { :retweet => tweet }
-  - else
-    =partial :'tweet', :locals => { :tweet => tweet }
+-if @count > 0
+  - @tweets.each do |tweet|
+    - if tweet.attrs.retweeted_status
+      = partial :retweet, :locals => { :retweet => tweet }
+    - else
+      = partial :tweet, :locals => { :tweet => tweet }
+-else
+  No tweets found
+

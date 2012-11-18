@@ -1,9 +1,9 @@
 %div.tweet.retweet
-  %img{:src => retweet.retweeted_status['user']['profile_image_url'], :width => 48, :height => 48, :alt => retweet.retweeted_status['user']['screen_name']}
+  %img{:src => retweet.attrs.retweeted_status['user']['profile_image_url'], :width => 48, :height => 48, :alt => retweet.attrs.retweeted_status['user']['screen_name']}
   %p.text= auto_link(retweet.text)
   %p.meta
-    %a{:href=>tweet_status_url(retweet.retweeted_status['id'],retweet.retweeted_status['user']['screen_name'])}= pretty_datetime(retweet.retweeted_status['created_at'])
+    %a{:href=>tweet_status_url(retweet.attrs.retweeted_status['id'],retweet.attrs.retweeted_status['user']['screen_name'])}= pretty_datetime(retweet.attrs.retweeted_status['created_at'])
     via
-    =retweet.retweeted_status['source']
-    -if retweet.retweeted_status['in_reply_to_status_id']
-      %a{:href=>tweet_status_url(retweet.retweeted_status['in_reply_to_status_id'], retweet.retweeted_status['in_reply_to_screen_name'])}= "in reply to #{retweet.retweeted_status['in_reply_to_screen_name']}"
+    = retweet.attrs.retweeted_status['source']
+    -if retweet.attrs.retweeted_status['in_reply_to_status_id']
+      %a{:href=>tweet_status_url(retweet.attrs.retweeted_status['in_reply_to_status_id'], retweet.attrs.retweeted_status['in_reply_to_screen_name'])}= "in reply to #{retweet.attrs.retweeted_status['in_reply_to_screen_name']}"

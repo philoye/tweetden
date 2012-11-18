@@ -146,6 +146,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    will_paginate (3.0.3)
     yui-compressor (0.9.6)
       POpen4 (>= 0.1.4)
 
@@ -181,4 +182,5 @@ DEPENDENCIES
   sinatra-support
   twitter-text
   unicorn
+  will_paginate
   yui-compressor

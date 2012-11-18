@@ -15,6 +15,7 @@ gem 'sinatra-support',      :require => 'sinatra/support'
 gem 'sinatra-partial',      :require => 'sinatra/partial'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'pg'
+gem 'will_paginate', :require => ['will_paginate', 'will_paginate/active_record']
 
 gem 'sinatra-assetpack', :require => 'sinatra/assetpack', :path => '/Users/philoye/code/sinatra-assetpack', :branch => 'my_master'
 #gem 'sinatra-assetpack', :require => 'sinatra/assetpack', :git => 'git://github.com/philoye/sinatra-assetpack.git', :branch => 'my_master'
