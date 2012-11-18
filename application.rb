@@ -87,6 +87,7 @@ class App < Sinatra::Base
   get '/' do
     cache_control :public, :must_revalidate, :max_age => 3600
     if params[:query]
+      if params[:query] == '' then redirect '/' end
       @query = CGI::unescape(params[:query])
       @tweets = Tweet.search_for(@query)
       params.except!("splat", "captures")
