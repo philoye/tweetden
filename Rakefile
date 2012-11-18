@@ -19,11 +19,49 @@ task :convert_xml_backup_to_json do
   end
 end
 
+namespace :migrate do
+
+  task :users do
+    u = ArchivedUser.first
+    hash = JSON.parse(u.to_json)
+    User.record_timestamps = false
+    user = User.create(
+      :twitter_id  => hash['twitter_id'],
+      :screen_name => hash['screen_name'],
+      :created_at  => hash['created_at'],
+      :updated_at  => hash['created_at'],
+      :raw         => hash.to_json
+    )
+    puts user
+    user.save
+    User.record_timestamps = true
+  end
+
+  task :tweets do
+    user = User.first
+    Tweet.record_timestamps = false
+    ArchivedTweet.each do |tweet|
+      hash = JSON.parse(tweet.to_json)
+      t = Tweet.create(
+        :user_id     => user.id,
+        :tweet_id    => hash['twitter_id'],
+        :text        => hash['text'],
+        :created_at  => hash['created_at'],
+        :updated_at  => hash['created_at'],
+        :raw         => hash.to_json
+      )
+      t.save!
+    end
+    Tweet.record_timestamps = true
+  end
+
+end
+
 namespace :import do
   desc "Imports the user"
   task :user do 
     json = TwitterCom.getUser(ENV['TWEETDEN_SCREEN_NAME'])
-    ArchivedUser.import(json)
+    User.import(json)
   end
 
   desc "Imports the last 200 tweets from twitter.com"
