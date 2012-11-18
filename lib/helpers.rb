@@ -1,5 +1,5 @@
 # This is a very ghetto, and limited, version of url_for
-def url_for(path,options)
+def url_for(path, options)
   uri = Addressable::URI.new(:path => path)
   uri.query_values = params.merge(options)
   return uri

@@ -26,3 +26,4 @@ class ArchivedUser
   end
 
 end
+
