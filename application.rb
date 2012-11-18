@@ -78,6 +78,7 @@ class App < Sinatra::Base
   }
 
   before do
+    @page   = (params[:page] || 1).to_i
     @per_page = 50
     @direction = params[:direction] || "desc"
     @user = User.first()
@@ -85,28 +86,20 @@ class App < Sinatra::Base
 
   get '/' do
     cache_control :public, :must_revalidate, :max_age => 3600
-    @page   = (params[:page] || 1).to_i
-    @count  = Tweet.count
-    @tweets = Tweet.paginate(:page => @page, :per_page => 50).order("created_at #{@direction}")
-    haml :index
-  end
-
-  get '/search/?' do
-    redirect '/'
-  end
-
-  post '/search' do
-    redirect "/search/#{CGI::escape(params[:query])}"
-  end
-
-  get '/search/:query' do
-    @page  = (params[:page] || 1).to_i
-    @query = CGI::unescape(params[:query])
-    @tweets = Tweet.search_for(@query)
+    if params[:query]
+      @query = CGI::unescape(params[:query])
+      @tweets = Tweet.search_for(@query)
+      params.except!("splat", "captures")
+    else
+      @tweets = Tweet
+    end
     @count = @tweets.count
     @tweets = @tweets.order("created_at #{@direction}").paginate(:page => @page, :per_page => 50)
-    params.except!("splat", "captures", "query")
     haml :index
+  end
+
+  post '/' do
+    redirect "/?query=#{CGI::escape(params[:query])}"
   end
 
   get 'favicon.ico' do

@@ -24,7 +24,7 @@
         #bar-wrapper
           #bar
             #search
-              %form{ :method => 'post', :action => '/search'}
+              %form{ :method => 'post', :action => '/'}
                 %input{:id => "search_field", :type => 'search', :tabindex=> 1, :name => 'query', :value => @query || "", :results=> "5", :autocomplete => "off", :placeholder => "Search" }
             = yield_content :pagination
 
