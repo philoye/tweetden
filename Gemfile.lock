@@ -1,5 +1,7 @@
-PATH
-  remote: /Users/philoye/code/sinatra-assetpack
+GIT
+  remote: git://github.com/philoye/sinatra-assetpack.git
+  revision: 9febca87dcbcf41f097c26a29af151b8abaa88ba
+  branch: my_master
   specs:
     sinatra-assetpack (0.0.12.pre1)
       jsmin
