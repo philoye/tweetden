@@ -54,6 +54,15 @@ namespace :import do
   end
 end
 
+namespace :database do
+  desc "Copy production database to local"
+    task :sync do
+      host = ENV['TWEETDEN_MONGO_HOST'] + ENV['TWEETDEN_MONGO_PORT']
+      system "mongodump -h #{host} -d tweetden -u #{ENV['TWEETDEN_MONGO_USER']} -p#{ENV['TWEETDEN_MONGO_PASS']} -o db/backups/"
+      system 'mongorestore -h localhost --drop -d tweetden db/backups/tweetden/'
+  end
+end
+
 # heroku calls this
 task :cron do
   Rake::Task["import:latest"].invoke
