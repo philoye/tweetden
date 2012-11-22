@@ -66,8 +66,8 @@ namespace :import do
 
   desc "Imports the last 200 tweets from twitter.com"
   task :latest do
-    xml = TwitterCom.getTweets(1,200)
-    ArchivedTweet.import( xml )
+    json = TwitterCom.getTweets(1,200)
+    Tweet.import( json )
   end
 
   desc "Imports up to 3200 tweets from twitter"
