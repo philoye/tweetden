@@ -1,6 +1,7 @@
 class Tweet < ActiveRecord::Base
 
   belongs_to :user
+  validates_uniqueness_of :tweet_id
 
   def self.search_for(query)
     if query.present?
