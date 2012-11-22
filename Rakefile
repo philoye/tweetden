@@ -77,7 +77,7 @@ namespace :import do
     n.times do |page|
       attempt(5,20) do
         puts "Trying page #{page+1}"
-        ArchivedTweet.import( TwitterCom.getTweets(page+1,count) )
+        Tweet.import( TwitterCom.getTweets(page+1,count) )
       end
     end
   end
@@ -86,7 +86,7 @@ namespace :import do
   task :saved do
     Dir.glob('backup/*.json') do |filename|
       f = File.open(filename)
-      ArchivedTweet.import( JSON.parse(f.read) )
+      Tweet.import( JSON.parse(f.read) )
       f.close
     end
   end
