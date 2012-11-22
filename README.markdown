@@ -6,12 +6,6 @@ TweetDen provides a personal Twitter archive, including a backup of your tweets 
 By changing one environment variable `ENV['TWEETDEN_SCREEN_NAME']`, this app can be *your* personal twitter archive.
 
 
-DISCLAIMER
-----------
-
-It is very much early days for TweetDen. It has a pretty lengthy [to do list](http://github.com/philoye/tweetden/blob/master/TODO.markdown), but it is usable/useful in its current incarnation, hence the release.
-
-
 HOW IT WORKS
 ------------
 
