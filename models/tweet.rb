@@ -25,7 +25,6 @@ class Tweet < ActiveRecord::Base
         :raw         => hash.to_json,
         :user_id     => user.id
       )
-      t.save
       Tweet.record_timestamps = true
     end
   end
