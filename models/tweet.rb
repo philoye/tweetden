@@ -12,10 +12,21 @@ class Tweet < ActiveRecord::Base
   end
 
   def self.import(statuses)
-    statuses.each do |status|
-      status.rename_key("id","twitter_id")
-      status.delete('user')
-      Tweet.create(status)
+    user = nil
+    statuses.each do |tweet|
+      Tweet.record_timestamps = false
+      hash = JSON.parse(tweet.to_json)
+      user = User.find_by_twitter_id(hash['user']['id']) unless user
+      t = Tweet.find_or_create_by_tweet_id(
+        :tweet_id    => hash['id_str'],
+        :text        => hash['text'],
+        :created_at  => hash['created_at'],
+        :updated_at  => hash['created_at'],
+        :raw         => hash.to_json,
+        :user_id     => user.id
+      )
+      t.save
+      Tweet.record_timestamps = true
     end
   end
 
