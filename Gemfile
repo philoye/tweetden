@@ -3,7 +3,6 @@ ruby '1.9.3'
 
 gem 'rake'
 
-gem 'heroku'
 gem 'foreman'
 gem 'unicorn'
 gem 'sinatra', :require => 'sinatra/base'
