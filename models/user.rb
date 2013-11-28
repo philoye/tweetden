@@ -9,10 +9,12 @@ class User < ActiveRecord::Base
   def self.import(user)
     user.rename_key("id","twitter_id")
     user.delete('status')
-    user = User.find_or_create_by_screen_name(user.screen_name)
-    user.raw = user
     puts user
-    user.save!
+    u = User.find_or_create_by_screen_name(user['screen_name'])
+    u.twitter_id  = user['twitter_id']
+    u.screen_name = user['screen_name']
+    u.raw = user
+    u.save!
   end
 
 end
