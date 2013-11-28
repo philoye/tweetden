@@ -20,10 +20,7 @@ GETTING STARTED
 1. Install the gems. Run `bundle install`
 
 
-2. Add an environment variable called `TWEETDEN_SCREEN_NAME`. I recommend adding to your `.bashrc` by including something like:
-
-        export SCREEN_NAME=philoye
-
+2. Create an `.env` file. There is an example file, you'll need to add your screen name, app key/secret, and oauth token for your account.
 
 3. Bootstrap the application. Run a couple of Rake commands:
 

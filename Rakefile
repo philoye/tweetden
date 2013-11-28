@@ -1,6 +1,7 @@
 $LOAD_PATH << File.dirname(__FILE__)
 ENV['RACK_ENV'] = 'development' unless ENV['RACK_ENV']
 
+require 'dotenv/tasks'
 require 'sinatra/activerecord/rake'
 require 'application'
 
@@ -21,7 +22,7 @@ end
 
 namespace :import do
   desc "Imports the user"
-  task :user do 
+  task :user => :dotenv do
     puts "Importing the user details"
     json = TwitterCom.getUser(ENV['SCREEN_NAME'])
     User.import(json)

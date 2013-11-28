@@ -47,6 +47,7 @@ GEM
       fssm (>= 0.2.7)
       sass (~> 3.1)
     dalli (2.3.0)
+    dotenv (0.9.0)
     em-websocket (0.3.8)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
@@ -150,6 +151,7 @@ DEPENDENCIES
   coffee-script
   compass
   dalli
+  dotenv
   foreman
   guard
   guard-livereload

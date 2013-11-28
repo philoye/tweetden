@@ -3,6 +3,7 @@ ruby '2.0.0'
 
 gem 'rake'
 
+gem 'dotenv'
 gem 'foreman'
 gem 'unicorn'
 gem 'sinatra', :require => 'sinatra/base'

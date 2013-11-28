@@ -1,4 +1,5 @@
 backup
 .sass-cache
 config/database.yml
+.env
 
