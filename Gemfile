@@ -33,6 +33,7 @@ gem 'mongo_mapper'
 gem 'addressable', :require => "addressable/uri"
 gem 'attempt'
 gem 'yui-compressor', :require => 'yui/compressor'
+gem 'oauth'
 
 group :development do
   gem 'sinatra-reloader', :require => 'sinatra/reloader'
