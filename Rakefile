@@ -23,7 +23,7 @@ namespace :import do
   desc "Imports the user"
   task :user do 
     puts "Importing the user details"
-    json = TwitterCom.getUser(ENV['TWEETDEN_SCREEN_NAME'])
+    json = TwitterCom.getUser(ENV['SCREEN_NAME'])
     User.import(json)
     puts "Importing done!"
   end
