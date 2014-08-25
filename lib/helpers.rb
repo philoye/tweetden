@@ -33,7 +33,7 @@ def pretty_datetime(datetime)
   end
 end
 
-def tweet_status_url(tweet_id,screen_name = ENV['TWEETDEN_SCREEN_NAME'])
+def tweet_status_url(tweet_id,screen_name = ENV['SCREEN_NAME'])
   "http://twitter.com/#{screen_name}/status/#{tweet_id}"
 end
 
